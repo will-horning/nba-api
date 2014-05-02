@@ -27,8 +27,8 @@ def index():
 @app.route('/teams', defaults={'team_id': None}, methods=['GET'], strict_slashes=False)    
 @app.route('/teams/<int:team_id>', methods=['GET'], strict_slashes=False)
 def teams(team_id):
-    if team_id: teams = session.query(Team).filter_by(id=team_id)    
-    else: teams = session.query(Team).all()
+    if team_id: teams = db.session.query(Team).filter_by(id=team_id)    
+    else: teams = db.session.query(Team).all()
     d = {'teams': []}
     for t in teams:
         team_vals = {'id': t.id, 'name': t.name, 'players': []}
