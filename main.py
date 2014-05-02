@@ -5,13 +5,13 @@ import os, sys, json
 # from sqlalchemy import *
 from flask import Flask, request, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
-# from models import
 DEV_DATABASE_URL = 'postgresql://foobar:foobar@localhost/nba_api'
 
 app = Flask(__name__)
 uri = os.environ.get('DATABASE_URL', DEV_DATABASE_URL)
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
-
+app.config['DEBUG'] = True
+ 
 db = SQLAlchemy(app)
 
 # Session = sessionmaker()
@@ -23,6 +23,7 @@ db = SQLAlchemy(app)
 @app.route('/')
 def index():
     ts = db.session.query(Team).all()
+    print len(ts)
     m = {t.id: t.name for t in ts}
     return json.dumps(m)
 
@@ -69,5 +70,7 @@ def index():
 #     hm = Heatmap(filtered_shot_rows)
 #     print hm.get_json_data()
 #     return json.dumps(hm.get_json_data())
+from models import Team, Game, Shot, Player
+
 if __name__ == "__main__":
     app.run(debug=True)
