@@ -5,9 +5,13 @@ import os, sys, json
 # from sqlalchemy import *
 from flask import Flask, request, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
+# from models import
+DEV_DATABASE_URL = 'postgresql://foobar:foobar@localhost/nba_api'
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+uri = os.environ.get('DATABASE_URL', DEV_DATABASE_URL)
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
+
 db = SQLAlchemy(app)
 
 # Session = sessionmaker()
