@@ -6,6 +6,7 @@ SQLAlchemy==0.9.4
 Werkzeug==0.9.4
 argparse==1.2.1
 flask-heroku==0.1.8
+gunicorn==18.0
 itsdangerous==0.24
 psycopg2==2.5.2
 wsgiref==0.1.2
