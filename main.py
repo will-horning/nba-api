@@ -43,8 +43,8 @@ def teams(team_id):
 @app.route('/players', methods=['GET'], strict_slashes=False, defaults={'player_id': None})
 @app.route('/players/<int:player_id>', methods=['GET'], strict_slashes=False)
 def players(player_id):
-    if player_id: players = session.query(Player).filter_by(id=player_id)
-    else: players = session.query(Player).all()
+    if player_id: players = db.session.query(Player).filter_by(id=player_id)
+    else: players = db.session.query(Player).all()
     ps = {'players': []}
     for p in players:
         ps.append({
