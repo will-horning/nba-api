@@ -47,7 +47,7 @@ def players(player_id):
     else: players = db.session.query(Player).all()
     ps = {'players': []}
     for p in players:
-        ps.append({
+        ps['players'].append({
             'full_name': p.full_name, 
             'id': p.id, 
             'n_shots': p.n_shots,
