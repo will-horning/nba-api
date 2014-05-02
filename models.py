@@ -40,7 +40,8 @@ class Team(db.Model):
     season = db.Column(db.String)
     players = db.relationship("Player", backref="team")
     
-    def __init__(self, name):
+    def __init__(self, name, season):
+    	self.season = season
         self.name = name
 
     def __repr__(self):
@@ -121,11 +122,11 @@ class Shot(db.Model):
 		"""
 		minutes_remaining = 0
 		seconds_remaining = 0
-		if ":" in game_time_db.String:
+		if ":" in game_time_string:
 			minutes_remaining = int(game_time_string.split(":")[0])
 			seconds_remaining = int(game_time_string.split(":")[1])
-		elif "." in game_time_db.String:
-			seconds_remaining = int(game_time_db_string.split(".")[0])
+		elif "." in game_time_string:
+			seconds_remaining = int(game_time_string.split(".")[0])
 		dt = datetime.datetime(int(date_string[:4]), int(date_string[4:6]),
 									   int(date_string[6:8]), 0, 0, 0)
 		dt += datetime.timedelta(minutes = QUARTER_LENGTH_IN_MIN * self.quarter)
