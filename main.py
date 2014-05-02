@@ -24,18 +24,18 @@ db = SQLAlchemy(app)
 def index():
     return "Foo"
 
-@app.route('/teams', defaults={'team_id': None}, methods=['GET'], strict_slashes=False)    
-@app.route('/teams/<int:team_id>', methods=['GET'], strict_slashes=False)
-def teams(team_id):
-    if team_id: teams = session.query(Team).filter_by(id=team_id)    
-    else: teams = session.query(Team).all()
-    d = {'teams': []}
-    for t in teams:
-        team_vals = {'id': t.id, 'name': t.name, 'players': []}
-        for p in t.players:
-            team_vals['players'].append({'id': p.id, 'full_name': p.full_name})
-        d['teams'].append(team_vals)
-    return json.dumps(d)
+# @app.route('/teams', defaults={'team_id': None}, methods=['GET'], strict_slashes=False)    
+# @app.route('/teams/<int:team_id>', methods=['GET'], strict_slashes=False)
+# def teams(team_id):
+#     if team_id: teams = session.query(Team).filter_by(id=team_id)    
+#     else: teams = session.query(Team).all()
+#     d = {'teams': []}
+#     for t in teams:
+#         team_vals = {'id': t.id, 'name': t.name, 'players': []}
+#         for p in t.players:
+#             team_vals['players'].append({'id': p.id, 'full_name': p.full_name})
+#         d['teams'].append(team_vals)
+#     return json.dumps(d)
 
 # @app.route('/players', methods=['GET'], strict_slashes=False, defaults={'player_id': None})
 # @app.route('/players/<int:player_id>', methods=['GET'], strict_slashes=False)
