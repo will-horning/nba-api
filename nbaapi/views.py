@@ -1,7 +1,11 @@
 import os, sys, json
 from flask import Flask, request, render_template
-from nbaapi import app, db
+from nbaapi import app, db, mongo
 from models import Shot, Team, Game, Player
+from bson import json_util
+from time import strftime
+
+DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 
 @app.route('/')
@@ -35,3 +39,12 @@ def players(player_id):
             'team_id': p.team_id
         })
     return json.dumps(ps)
+
+@app.route('/shots/<int:player_id>', methods=['GET'], strict_slashes=False)
+def shots(player_id):
+    shots = []
+    for shot in mongo.shots.find({'player_id': player_id}):
+        del shot['_id']
+        shot['datetime'] = shot['datetime'].strftime(DATE_FORMAT)
+        shots.append(shot)
+    return json.dumps({'shots': shots})
