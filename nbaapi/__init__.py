@@ -14,21 +14,9 @@ db = SQLAlchemy(app)
 mongo_url = os.environ.get('MONGOHQ_URL')
 if mongo_url:
     mongo_conn = pymongo.Connection(mongo_url)
+    mongo = mongo_conn.nba_api_shots
 else:
     mongo_conn = pymongo.Connection('localhost', 27017)
-mongo = mongo_conn['shots_db']
-
-
-# from nbaapi.models import Shot, Player
-# i = len(db.session.query(Player).all())
-# with app.app_context():
-#     for p in db.session.query(Player).all():
-#         print i
-#         print p.full_name
-#         for s in p.shots:
-#             fields = s.__dict__.copy()
-#             del fields['_sa_instance_state']
-#             mdb.shots.insert(fields)
-#         i -= 1
+    mongo = mongo_conn['shots_db']
 
 import nbaapi.views
