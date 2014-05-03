@@ -1,5 +1,5 @@
 import datetime, json
-from main import db
+from nbaapi import db
 
 QUARTER_LENGTH_IN_MIN = 12 # Used for converting game time to absolute time.
 
