@@ -32,7 +32,6 @@ shot_type_map[23] = "Floating Jump Shot"
 shot_type_map[24] = "Leaning Jump Shot"
 shot_type_map[25] = "Mini Hook Shot"
 
-
 class Team(db.Model):
     __tablename__ = "teams"
     id = db.Column(db.Integer, primary_key=True)
@@ -46,6 +45,12 @@ class Team(db.Model):
 
     def __repr__(self):
         return self.name
+
+    def to_dict(self):
+    	d = self.__dict__.copy()
+    	del d['_sa_instance_state']
+    	d['players'] = [p.to_dict() for p in self.players]
+    	return d
 
 class Game(db.Model):
 	__tablename__ = "games"
@@ -80,6 +85,12 @@ class Player(db.Model):
 
 	def __repr__(self):
 		return self.full_name + " " + str(self.id)
+
+	def to_dict(self):
+		d = self.__dict__.copy()
+		del d['_sa_instance_state']
+		d['team'] = self.team.name
+		return d
 
 class Shot(db.Model):
 	__tablename__ = "shots"
