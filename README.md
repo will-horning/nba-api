@@ -2,7 +2,7 @@ API for NBA data scraped from CBSSports.com. Live version [here](nba-api.herokua
 
 Right now it only contains data for the 2013-2014 season, I'll update it to include past seasons soon.
 
-####Usage
+#Usage
 
 Only GET requests are supported. All requests support pagination using the following arguments:
 page: The page number.
@@ -12,7 +12,7 @@ Example:
 /teams/?page=2&?per_page=10
 ```
 
-#Teams
+####Teams
 ```
 /teams/
 ```
@@ -47,7 +47,7 @@ Returns the team with the given team_id.
 ```
 Returns all teams with the given name (City, followed by team name, e.g. Chicago Bulls.) Right now the db only contains the 2013-2014 season. Eventually I'll include previous seasons where the same team from different seasons are considered distinct team objects (so the 2013 Bulls would be a seperate object from the 2012 Bulls).
 
-#Players
+####Players
 
 ```
 /players/
@@ -66,13 +66,13 @@ Example:
  
 ```
 
-'''
+```
 /players/<int:player_id>
-'''
+```
 
 Returns the player with the listed id number.
 
-#Shots
+####Shots
 
 ```
 /shots/
@@ -101,7 +101,7 @@ Example:
 ```
 Returns all shots taken by the player with the given id.
 
-#Games
+####Games
 ```
 /games/
 ```
