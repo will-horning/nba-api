@@ -2,6 +2,8 @@ API for NBA data scraped from CBSSports.com. Live version [here](http://nba-api.
 
 Right now it only contains data for the 2013-2014 season, I'll update it to include past seasons soon.
 
+This is a very early work in progess, only a few featuers are supported thus far.
+
 #Usage
 
 Only GET requests are supported. All requests support pagination using the following arguments:
