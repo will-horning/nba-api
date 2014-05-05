@@ -1,4 +1,4 @@
-API for NBA data scraped from CBSSports.com. Live version [here](nba-api.herokuapp.com). 
+API for NBA data scraped from CBSSports.com. Live version [here](http://nba-api.herokuapp.com). 
 
 Right now it only contains data for the 2013-2014 season, I'll update it to include past seasons soon.
 
