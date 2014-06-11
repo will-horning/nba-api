@@ -1,15 +1,21 @@
 import os, sys, json, pymongo
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-# from flask.ext.pymongo import PyMongo 
-
+from flask.ext import restful
 
 app = Flask(__name__)
+api = restful.Api(app)
 DEV_DATABASE_URL = 'postgresql://foobar:foobar@localhost/nba_api'
 uri = os.environ.get('DATABASE_URL', DEV_DATABASE_URL)
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['DEBUG'] = True
 db = SQLAlchemy(app)
+
+class Hello(restful.Resource):
+	def get(self):
+		return {"hello": "world"}
+
+api.add_resource(Hello, "/hello")
 
 mongo_url = os.environ.get('MONGOHQ_URL')
 if mongo_url:
