@@ -11,12 +11,12 @@ page: The page number.
 per_page: The number of objects per page.
 Example:
 ```
-/teams/?page=2&?per_page=10
+/teams?page=2&per_page=10
 ```
 
 ####Teams
 ```
-/teams/
+/teams
 ```
 Retrives all teams.
 
@@ -40,19 +40,14 @@ Example:
 ```
 
 ```
-/teams/<int:team_id>
+/team/<int:team_id>
 ```
 Returns the team with the given team_id.
-
-```
-/teams/<team_name>
-```
-Returns all teams with the given name (City, followed by team name, e.g. Chicago Bulls.) Right now the db only contains the 2013-2014 season. Eventually I'll include previous seasons where the same team from different seasons are considered distinct team objects (so the 2013 Bulls would be a seperate object from the 2012 Bulls).
 
 ####Players
 
 ```
-/players/
+/players
 ```
 Returns all players in the league.
 
@@ -69,7 +64,7 @@ Example:
 ```
 
 ```
-/players/<int:player_id>
+/player/<int:player_id>
 ```
 
 Returns the player with the listed id number.
@@ -77,7 +72,7 @@ Returns the player with the listed id number.
 ####Shots
 
 ```
-/shots/
+/shots
 ```
 Returns every shot taken in every season by every player.
 
@@ -99,13 +94,13 @@ Example:
 ```
 
 ```
-/shots/<int:player_id>
+/shot/<int:player_id>
 ```
 Returns all shots taken by the player with the given id.
 
 ####Games
 ```
-/games/
+/games
 ```
 Returns all games over every season.
 
