@@ -39,6 +39,11 @@ Example:
 }
 ```
 
+Filter options: name, id, season
+```
+/api/v1.0/teams?name=Orlando+Magic&season=2014&id=10
+```
+
 ```
 /team/<int:team_id>
 ```
@@ -62,6 +67,12 @@ Example:
 }
  
 ```
+
+Filter options: fullname, team_id, id
+```
+/api/v1.0/players?fullname=Kobe+Bryant&team_id=10&id=103334
+```
+
 
 ```
 /player/<int:player_id>
@@ -93,10 +104,10 @@ Example:
 }
 ```
 
+Filter by: player_id
 ```
-/shot/<int:player_id>
+/api/v1.0/shots?player_id=103223
 ```
-Returns all shots taken by the player with the given id.
 
 ####Games
 ```
