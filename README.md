@@ -14,6 +14,11 @@ Example:
 /teams?page=2&per_page=10
 ```
 
+#Base url:
+```
+http://nba-api.herokuapp.com/api/v1.0
+```
+
 ####Teams
 ```
 /teams
