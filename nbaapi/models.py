@@ -72,6 +72,7 @@ class Game(db.Model):
 	def to_dict(self):
 		d = self.__dict__.copy()
 		del d['_sa_instance_state']
+		d['datetime'] = self.datetime.strftime('%Y/%m/%d %H:%M:%S')
 		d['away_team'] = self.away_team.name
 		d['home_team'] = self.home_team.name
 		# d['n_shots'] = len(self.shots)
